@@ -1,1 +1,9 @@
-<p>products works!</p>
+<div class="container">
+    <div class="cards">
+        @for(eachProduct of productList; track $index){
+        <div>
+            <app-card-product [product]="eachProduct" class="eachCard"></app-card-product>
+        </div>
+        }
+    </div>
+</div>

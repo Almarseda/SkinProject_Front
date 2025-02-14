@@ -1,1 +1,14 @@
-<p>card-product works!</p>
+@if(product){
+
+<div class="card">
+    @if(product.disponibilidad === 0){
+    <p>Disponible Ahora</p>
+    }@else {
+    <p>Disponible en {{product.disponibilidad}} dias</p>
+    }
+    <h4>{{product.nombre}}</h4>
+    <p>{{product.estado}}</p>
+    <p>{{product.precio}}Eur</p>
+    <p>{{product.rareza}}</p>
+</div>
+}
