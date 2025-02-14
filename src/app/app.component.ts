@@ -12,9 +12,9 @@ import { SidebarComponent } from "./components/sidebar/sidebar.component";
 export class AppComponent {
   title = 'SkinsProject';
 
-  selectedEstados: string[] = [];
+  selectedCondition: string[] = [];
 
   onStateChange(selectedEstados: string[]) {
-    this.selectedEstados = selectedEstados;
+    this.selectedCondition = selectedEstados;
   }
 }

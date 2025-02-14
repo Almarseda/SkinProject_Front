@@ -12,7 +12,7 @@ import { ProductService } from '../../services/product.service';
 })
 export class ProductsComponent {
 
-  @Input() selectedEstados: string[] = [];
+  @Input() selectedCondition: string[] = [];
 
   productService = inject(ProductService);
 
@@ -26,17 +26,17 @@ export class ProductsComponent {
 
   }
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['selectedEstados']) {
+    if (changes['selectedCondition']) {
       this.filterProducts();
     }
   }
 
   filterProducts() {
-    if (this.selectedEstados.length === 0) {
+    if (this.selectedCondition.length === 0) {
       this.filteredProductList = this.productList;
     } else {
       this.filteredProductList = this.productList.filter(product =>
-        this.selectedEstados.includes(product.estado)
+        this.selectedCondition.includes(product.condition)
       );
     }
   }
