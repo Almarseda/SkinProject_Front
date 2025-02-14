@@ -8,11 +8,13 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class FilterServicesService {
 
-  productList: Product[] = [];
+  private productList = new BehaviorSubject<Product[]>([]);
+  productList$ = this.productList.asObservable();
 
   constructor(private productService: ProductService) {
-    this.productList = this.productService.getAllProducts();
+    this.loadAllProducts();
   }
+
   private minPriceValue = new BehaviorSubject<number>(0);
   private maxPriceValue = new BehaviorSubject<number>(0);
 
@@ -33,5 +35,10 @@ export class FilterServicesService {
 
   getMaxPrice(): number {
     return this.maxPriceValue.getValue();
+  }
+
+  private loadAllProducts(): void {
+    const products = this.productService.getAllProducts();
+    this.productList.next(products);
   }
 }

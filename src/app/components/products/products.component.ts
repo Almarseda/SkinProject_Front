@@ -1,4 +1,4 @@
-import { Component, inject, Input, SimpleChanges } from '@angular/core';
+import { Component, inject, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Product } from '../../interfaces/product';
 import { CardProductComponent } from "../card-product/card-product.component";
 import { ProductService } from '../../services/product-services.service';
@@ -21,8 +21,10 @@ export class ProductsComponent {
   productList: Product[] = [];
 
   ngOnInit() {
-    this.productList = this.productService.getAllProducts();
-    this.filteredProductList = this.productList;
+    this.filterService.productList$.subscribe(products => {
+      this.productList = products;
+      this.filteredProductList = this.productList;
+    });
 
     this.filterService.minPrice$.subscribe(minPrice => {
       this.filterProducts(minPrice, this.filterService.getMaxPrice());
