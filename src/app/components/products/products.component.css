@@ -1,13 +1,9 @@
-.container {
-    margin: 0 50px;
-}
-
 .cards {
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(9, 1fr);
     grid-template-rows: repeat(6, 1fr);
     gap: 2px;
-
 }
 
 .eachCard {
@@ -15,7 +11,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+
     background-color: #2B2E30;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
