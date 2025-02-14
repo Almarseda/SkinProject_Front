@@ -260,15 +260,4 @@ export class ProductService {
     return [... new Set(this.productList.map(product => product.condition))]
   }
 
-
-
-
-  /*  nombre: string;
-   modelo: string;
-   precio: number;
-   estado: string;
-   disponibilidad: number;
-   rareza: string;
-   color: string;
-   imagen: string; */
 }

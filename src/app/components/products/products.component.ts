@@ -1,7 +1,8 @@
 import { Component, inject, Input, SimpleChanges } from '@angular/core';
 import { Product } from '../../interfaces/product';
 import { CardProductComponent } from "../card-product/card-product.component";
-import { ProductService } from '../../services/product.service';
+import { ProductService } from '../../services/product-services.service';
+import { FilterServicesService } from '../../services/filter-services.service';
 
 @Component({
   selector: 'app-products',
@@ -11,33 +12,48 @@ import { ProductService } from '../../services/product.service';
   styleUrl: './products.component.css'
 })
 export class ProductsComponent {
-
   @Input() selectedCondition: string[] = [];
 
   productService = inject(ProductService);
+  filterService = inject(FilterServicesService);
 
   filteredProductList: Product[] = [];
   productList: Product[] = [];
 
   ngOnInit() {
-    this.productList = this.productService.getAllProducts()
+    this.productList = this.productService.getAllProducts();
     this.filteredProductList = this.productList;
-    console.log(this.filteredProductList)
 
+    this.filterService.minPrice$.subscribe(minPrice => {
+      this.filterProducts(minPrice, this.filterService.getMaxPrice());
+    });
+
+    this.filterService.maxPrice$.subscribe(maxPrice => {
+      this.filterProducts(this.filterService.getMinPrice(), maxPrice);
+    });
   }
+
   ngOnChanges(changes: SimpleChanges) {
     if (changes['selectedCondition']) {
       this.filterProducts();
     }
   }
 
-  filterProducts() {
-    if (this.selectedCondition.length === 0) {
-      this.filteredProductList = this.productList;
-    } else {
-      this.filteredProductList = this.productList.filter(product =>
+  filterProducts(minPrice?: number, maxPrice?: number) {
+    let filteredList = this.productList;
+
+    if (this.selectedCondition.length > 0) {
+      filteredList = filteredList.filter(product =>
         this.selectedCondition.includes(product.condition)
       );
     }
+
+    if (minPrice !== undefined && maxPrice !== undefined) {
+      filteredList = filteredList.filter(product =>
+        product.price >= minPrice && product.price <= maxPrice
+      );
+    }
+
+    this.filteredProductList = filteredList;
   }
 }

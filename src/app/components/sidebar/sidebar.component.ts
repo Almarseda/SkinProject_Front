@@ -1,10 +1,11 @@
 import { Component, EventEmitter, inject, Output } from '@angular/core';
-import { ProductService } from '../../services/product.service';
+import { ProductService } from '../../services/product-services.service';
+import { PriceComponent } from "../filters/price/price.component";
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [],
+  imports: [PriceComponent],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css'
 })
