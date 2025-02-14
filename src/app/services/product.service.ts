@@ -260,9 +260,7 @@ export class ProductService {
     return [... new Set(this.productList.map(product => product.condition))]
   }
 
-  getByEstado(estado: string) {
-    this.productList.filter(product => product.condition === estado)
-  }
+
 
 
   /*  nombre: string;

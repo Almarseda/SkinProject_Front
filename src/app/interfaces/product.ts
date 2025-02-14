@@ -1,10 +1,10 @@
 export interface Product {
-    nombre: string;
-    modelo: string;
-    precio: number;
-    estado: string;
-    disponibilidad: number;
-    rareza: string;
+    name: string;
+    model: string;
+    price: number;
+    condition: string;
+    availability: number;
+    rarity: string;
     color: string;
-    imagen: string;
+    image: string;
 }

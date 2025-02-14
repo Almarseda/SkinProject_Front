@@ -20,7 +20,7 @@ export class SidebarComponent {
   productService = inject(ProductService)
 
   ngOnInit() {
-    this.arrEstados = this.productService.getEstado();
+    this.arrEstados = this.productService.getCondition();
     this.selectedEstados = [...this.arrEstados];
     this.stateChange.emit(this.selectedEstados);
     console.log(this.arrEstados);

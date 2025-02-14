@@ -1,19 +1,19 @@
 @if(product){
 
 <div class="card">
-    @if(product.disponibilidad === 0){
+    @if(product.availability === 0){
     <p class="dispo"> <fa-icon [icon]="faClock"></fa-icon> Disponible ahora</p>
-    }@else if(product.disponibilidad === 1){
-    <p class="dispo"><fa-icon [icon]="faClock"></fa-icon> Disponible en {{product.disponibilidad}} día</p>
+    }@else if(product.availability === 1){
+    <p class="dispo"><fa-icon [icon]="faClock"></fa-icon> Disponible en {{product.availability}} día</p>
     }@else {
-    <p class="dispo"><fa-icon [icon]="faClock"></fa-icon> Disponible en {{product.disponibilidad}} dias</p>
+    <p class="dispo"><fa-icon [icon]="faClock"></fa-icon> Disponible en {{product.availability}} dias</p>
     }
-    <p class="price">{{product.precio}} €</p>
+    <p class="price">{{product.price}} €</p>
     <div class="info">
-        <p>{{product.modelo}}</p>
-        <h4>{{product.nombre}}</h4>
-        <p>{{product.estado}}</p>
-        <p class="rarity">{{product.rareza}}</p>
+        <p>{{product.model}}</p>
+        <h4>{{product.name}}</h4>
+        <p>{{product.condition}}</p>
+        <p class="rarity">{{product.rarity}}</p>
     </div>
 </div>
 }
