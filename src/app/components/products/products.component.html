@@ -1,7 +1,13 @@
-<div class="containerCard">
+<div class="container">
     <div class="cards">
-        @for(eachProduct of productList; track $index){
+        @if(filteredProductList.length === 0){
+        <div class="noProducts">
+            <h2>No hay productos</h2>
+        </div>
+        }@else{
+        @for(eachProduct of filteredProductList; track $index){
         <app-card-product [product]="eachProduct" class="eachCard"></app-card-product>
+        }
         }
     </div>
 </div>

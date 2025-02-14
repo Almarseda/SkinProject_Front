@@ -1,10 +1,10 @@
 <div class="main">
     <div class="container">
         <div class="sidebar">
-            <app-sidebar></app-sidebar>
+            <app-sidebar (stateChange)="onStateChange($event)"></app-sidebar>
         </div>
         <div class="products">
-            <app-products></app-products>
+            <app-products [selectedEstados]="selectedEstados"></app-products>
         </div>
     </div>
 </div>

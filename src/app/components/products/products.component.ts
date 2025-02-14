@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input, SimpleChanges } from '@angular/core';
 import { Product } from '../../interfaces/product';
 import { CardProductComponent } from "../card-product/card-product.component";
 import { ProductService } from '../../services/product.service';
@@ -12,12 +12,32 @@ import { ProductService } from '../../services/product.service';
 })
 export class ProductsComponent {
 
-  productService = inject(ProductService)
+  @Input() selectedEstados: string[] = [];
 
-  productList: Product[] = []
+  productService = inject(ProductService);
+
+  filteredProductList: Product[] = [];
+  productList: Product[] = [];
 
   ngOnInit() {
     this.productList = this.productService.getAllProducts()
-    console.log(this.productList)
+    this.filteredProductList = this.productList;
+    console.log(this.filteredProductList)
+
+  }
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['selectedEstados']) {
+      this.filterProducts();
+    }
+  }
+
+  filterProducts() {
+    if (this.selectedEstados.length === 0) {
+      this.filteredProductList = this.productList;
+    } else {
+      this.filteredProductList = this.productList.filter(product =>
+        this.selectedEstados.includes(product.estado)
+      );
+    }
   }
 }

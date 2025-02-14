@@ -11,4 +11,10 @@ import { SidebarComponent } from "./components/sidebar/sidebar.component";
 })
 export class AppComponent {
   title = 'SkinsProject';
+
+  selectedEstados: string[] = [];
+
+  onStateChange(selectedEstados: string[]) {
+    this.selectedEstados = selectedEstados;
+  }
 }

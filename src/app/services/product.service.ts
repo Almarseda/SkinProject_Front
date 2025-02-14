@@ -409,12 +409,29 @@ export class ProductService {
     }
   ]
 
-
   constructor() {
     this.getAllProducts();
   }
+
   getAllProducts() {
     return this.productList;
   }
 
+  getEstado() {
+    return [... new Set(this.productList.map(product => product.estado))]
+  }
+
+  getByEstado(estado: string) {
+    this.productList.filter(product => product.estado === estado)
+  }
+
+
+  /*  nombre: string;
+   modelo: string;
+   precio: number;
+   estado: string;
+   disponibilidad: number;
+   rareza: string;
+   color: string;
+   imagen: string; */
 }
