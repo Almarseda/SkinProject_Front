@@ -14,8 +14,8 @@ export class ProductService {
       condition: "Poco usado",
       availability: 3,
       rarity: "Común",
-      color: ["Azul", "Blanco"],
-      image: "https://ejemplo.com/p90-muerte-fria.jpg"
+      color: ["Rojo", "Negro"],
+      image: "p90/muertefria.png"
     },
     {
       name: "Cazador Nocturno",
@@ -24,8 +24,8 @@ export class ProductService {
       condition: "Nuevo",
       availability: 0,
       rarity: "Raro",
-      color: ["Negro", "Verde"],
-      image: "https://ejemplo.com/bayoneta-cazador-nocturno.jpg"
+      color: ["Azul"],
+      image: "bayoneta/cazadornocturno.png"
     },
     {
       name: "Hidra",
@@ -34,8 +34,8 @@ export class ProductService {
       condition: "Poco usado",
       availability: 1,
       rarity: "Épico",
-      color: ["Verde", "Negro"],
-      image: "https://ejemplo.com/guantes-hidra.jpg"
+      color: ["Azul", "Dorado"],
+      image: "guantes/hidra.png"
     },
     {
       name: "Agua Viva",
@@ -44,8 +44,8 @@ export class ProductService {
       condition: "Bastante usado",
       availability: 0,
       rarity: "Poco común",
-      color: ["Rosa", "Morado"],
-      image: "https://ejemplo.com/glock-agua-viva.jpg"
+      color: ["Rojo", "Azul"],
+      image: "glock18/aguaviva.png"
     },
     {
       name: "Onda de Choque",
@@ -54,8 +54,8 @@ export class ProductService {
       condition: "Nuevo",
       availability: 0,
       rarity: "Raro",
-      color: ["Azul", "Blanco"],
-      image: "https://ejemplo.com/falchion-onda-choque.jpg"
+      color: ["Multicolor"],
+      image: "falchion/ondadechoque.png"
     },
     {
       name: "Fénix",
@@ -64,8 +64,8 @@ export class ProductService {
       condition: "Nuevo",
       availability: 0,
       rarity: "Raro",
-      color: ["Rojo", "Naranja"],
-      image: "https://ejemplo.com/awp-fenix.jpg"
+      color: ["Rojo", "Dorado"],
+      image: "awp/fenix.png"
     },
     {
       name: "Cibernético",
@@ -74,8 +74,8 @@ export class ProductService {
       condition: "Poco usado",
       availability: 2,
       rarity: "Común",
-      color: ["Verde", "Negro"],
-      image: "https://ejemplo.com/m4a1s-cibernetico.jpg"
+      color: ["Azul"],
+      image: "m4a1s/cibernetico.png"
     },
     {
       name: "Mármol Fade",
@@ -85,7 +85,7 @@ export class ProductService {
       availability: 0,
       rarity: "Raro",
       color: ["Multicolor"],
-      image: "https://ejemplo.com/talon-marmol-fade.jpg"
+      image: "talon/marmolfade.png"
     },
     {
       name: "Tejedor de Dragones",
@@ -94,8 +94,8 @@ export class ProductService {
       condition: "Poco usado",
       availability: 1,
       rarity: "Épico",
-      color: ["Rojo", "Negro"],
-      image: "https://ejemplo.com/guantes-tejedor-dragones.jpg"
+      color: ["Rosa", "Azul"],
+      image: "guantes/tejedordedragones.png"
     },
     {
       name: "Vulcan",
@@ -104,8 +104,8 @@ export class ProductService {
       condition: "Bastante usado",
       availability: 0,
       rarity: "Poco común",
-      color: ["Azul", "Blanco"],
-      image: "https://ejemplo.com/ak47-vulcan.jpg"
+      color: ["Negro", "Blanco"],
+      image: "ak47/vulkan.png"
     },
     {
       name: "Caza Nocturna",
@@ -114,8 +114,8 @@ export class ProductService {
       condition: "Nuevo",
       availability: 0,
       rarity: "Raro",
-      color: ["Negro", "Verde"],
-      image: "https://ejemplo.com/bowie-caza-nocturna.jpg"
+      color: ["Azul"],
+      image: "bowie/cazanocturna.png"
     },
     {
       name: "Puño de Sangre",
@@ -124,8 +124,8 @@ export class ProductService {
       condition: "Poco usado",
       availability: 1,
       rarity: "Épico",
-      color: ["Rojo", "Negro"],
-      image: "https://ejemplo.com/guantes-puno-sangre.jpg"
+      color: ["Rojo"],
+      image: "guantes/punodesangre.png"
     },
     {
       name: "Fuego Oceánico",
@@ -134,8 +134,8 @@ export class ProductService {
       condition: "Bastante usado",
       availability: 0,
       rarity: "Poco común",
-      color: ["Azul", "Naranja"],
-      image: "https://ejemplo.com/p2000-fuego-oceanico.jpg"
+      color: ["Azul", "Rosa"],
+      image: "p90/fuegooceanico.png"
     },
     {
       name: "Mármol Fade",
@@ -145,7 +145,7 @@ export class ProductService {
       availability: 0,
       rarity: "Raro",
       color: ["Multicolor"],
-      image: "https://ejemplo.com/ursus-marmol-fade.jpg"
+      image: "ursus/marmolfade.png"
     },
     {
       name: "Dragón Lore",
@@ -154,8 +154,8 @@ export class ProductService {
       condition: "Nuevo",
       availability: 0,
       rarity: "Épico",
-      color: ["Dorado", "Negro"],
-      image: "https://ejemplo.com/awp-dragon-lore.jpg"
+      color: ["Dorado", "Naranja"],
+      image: "awp/dragonlore.png"
     },
     {
       name: "Zancudo",
@@ -164,8 +164,8 @@ export class ProductService {
       condition: "Poco usado",
       availability: 2,
       rarity: "Común",
-      color: ["Verde", "Negro"],
-      image: "https://ejemplo.com/m4a4-zancudo.jpg"
+      color: ["Naranja", "Negro"],
+      image: "m4a4/zancudo.png"
     },
     {
       name: "Onda de Choque",
@@ -174,8 +174,8 @@ export class ProductService {
       condition: "Nuevo",
       availability: 0,
       rarity: "Raro",
-      color: ["Azul", "Blanco"],
-      image: "https://ejemplo.com/navaja-onda-choque.jpg"
+      color: ["Multicolor"],
+      image: "navaja/ondadechoque.png"
     },
     {
       name: "Rey del Pantano",
@@ -184,8 +184,8 @@ export class ProductService {
       condition: "Poco usado",
       availability: 1,
       rarity: "Épico",
-      color: ["Verde", "Marrón"],
-      image: "https://ejemplo.com/guantes-rey-pantano.jpg"
+      color: ["Blanco"],
+      image: "guantes/reydelpantano.png"
     },
     {
       name: "Jaguar",
@@ -195,7 +195,7 @@ export class ProductService {
       availability: 0,
       rarity: "Poco común",
       color: ["Naranja", "Negro"],
-      image: "https://ejemplo.com/ak47-jaguar.jpg"
+      image: "ak47/jaguar.png"
     },
     {
       name: "Mármol Fade",
@@ -205,7 +205,7 @@ export class ProductService {
       availability: 0,
       rarity: "Raro",
       color: ["Multicolor"],
-      image: "https://ejemplo.com/shadow-daggers-marmol-fade.jpg"
+      image: "shadowdaggers/marmolfade.png"
     },
     {
       name: "Hipnótico",
@@ -214,8 +214,8 @@ export class ProductService {
       condition: "Poco usado",
       availability: 2,
       rarity: "Común",
-      color: ["Azul", "Morado"],
-      image: "https://ejemplo.com/deagle-hipnotico.jpg"
+      color: ["Multicolor"],
+      image: "deserteagle/hipnotico.png"
     },
     {
       name: "Cazador Nocturno",
@@ -224,8 +224,8 @@ export class ProductService {
       condition: "Nuevo",
       availability: 0,
       rarity: "Raro",
-      color: ["Negro", "Verde"],
-      image: "https://ejemplo.com/nomad-cazador-nocturno.jpg"
+      color: ["Negro"],
+      image: "nomad/cazadornocturno.png"
     },
     {
       name: "Espectro Lunar",
@@ -234,8 +234,8 @@ export class ProductService {
       condition: "Poco usado",
       availability: 1,
       rarity: "Épico",
-      color: ["Azul", "Plateado"],
-      image: "https://ejemplo.com/guantes-espectro-lunar.jpg"
+      color: ["Verde"],
+      image: "guantes/espectrolunar.png"
     },
     {
       name: "Océano",
@@ -244,8 +244,8 @@ export class ProductService {
       condition: "Nuevo",
       availability: 0,
       rarity: "Raro",
-      color: ["Azul", "Blanco"],
-      image: "https://ejemplo.com/awp-oceano.jpg"
+      color: ["Blanco", "Azul"],
+      image: "awp/oceano.png"
     }
   ];
   constructor() {

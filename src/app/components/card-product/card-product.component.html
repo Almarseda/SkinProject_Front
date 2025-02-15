@@ -8,6 +8,9 @@
     }@else {
     <p class="dispo"><fa-icon [icon]="faClock"></fa-icon> Disponible en {{product.availability}} dias</p>
     }
+    <figure>
+        <img [src]="product.image" [alt]="product.name">
+    </figure>
     <p class="price">{{product.price}} €</p>
     <div class="info">
         <p>{{product.model}}</p>
