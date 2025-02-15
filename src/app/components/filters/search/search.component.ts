@@ -20,7 +20,11 @@ export class SearchComponent {
   searchControl = new FormControl('');
 
   ngOnInit() {
-    // Suscribirse a los cambios con debounce para evitar llamadas excesivas
+
+    /* this.searchControl.valueChanges.subscribe(value => {
+      this.filterService.setSearchQuery(value || '');
+    }); */
+
     this.searchControl.valueChanges.pipe(debounceTime(300)).subscribe(value => {
       this.filterService.setSearchQuery(value || '');
     });
