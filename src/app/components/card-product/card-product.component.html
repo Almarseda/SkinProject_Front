@@ -1,28 +1,31 @@
 @if(product){
 
-<div class="card">
-    @if(product.availability === 0){
-    <p class="dispo"> <fa-icon [icon]="faClock"></fa-icon> Disponible ahora</p>
-    }@else if(product.availability === 1){
-    <p class="dispo"><fa-icon [icon]="faClock"></fa-icon> Disponible en {{product.availability}} día</p>
-    }@else {
-    <p class="dispo"><fa-icon [icon]="faClock"></fa-icon> Disponible en {{product.availability}} dias</p>
-    }
-    <figure>
-        <img [src]="product.image" [alt]="product.name">
-    </figure>
-    <p class="price">{{product.price}} €</p>
+<div class="card flex justify-center p-0">
+    <div class="img flex-col justify-center">
+        @if(product.availability === 0){
+        <p class="dispo"> <fa-icon [icon]="faClock"></fa-icon> Disponible ahora</p>
+        }@else if(product.availability === 1){
+        <p class="dispo"><fa-icon [icon]="faClock"></fa-icon> Disponible en {{product.availability}} día</p>
+        }@else {
+        <p class="dispo"><fa-icon [icon]="faClock"></fa-icon> Disponible en {{product.availability}} dias</p>
+        }
+        <figure class="flex justify-center">
+            <img [src]="product.image" [alt]="product.name" class="shad-cus p-3">
+        </figure>
+        <p class="price">{{product.price}} €</p>
+    </div>
     <div class="info">
         <p>{{product.model}}</p>
         <h4>{{product.name}}</h4>
         <p>{{product.condition}}</p>
         <p class="rarity">{{product.rarity}}</p>
         @if(product.color.length > 1){
-        <p> <span [class]="product.color[0]" class="text-xs">{{product.color[0]}}</span>, <span
-                [class]="product.color[1]" class="text-xs">{{product.color[1]}}</span>
+
+        <p> <span [class]="product.color[0]" class="text-xs"><fa-icon [icon]="faDot"></fa-icon></span> / <span
+                [class]="product.color[1]" class="text-xs"><fa-icon [icon]="faDot"></fa-icon></span>
         </p>
         }@else{
-        <p class=""> <span [class]="product.color[0]" class="text-xs">{{product.color[0]}}</span></p>
+        <p class=""> <span [class]="product.color[0]" class="text-xs"><fa-icon [icon]="faDot"></fa-icon></span></p>
         }
     </div>
 </div>

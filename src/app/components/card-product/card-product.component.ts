@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Product } from '../../interfaces/product';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faClock } from '@fortawesome/free-solid-svg-icons';
+import { faClock, faDotCircle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-card-product',
@@ -12,6 +12,7 @@ import { faClock } from '@fortawesome/free-solid-svg-icons';
 })
 export class CardProductComponent {
   faClock = faClock;
+  faDot = faDotCircle
   @Input() product: Product | null = null;
 
 

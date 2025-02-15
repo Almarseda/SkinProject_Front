@@ -66,10 +66,12 @@
 }
 
 .Multicolor {
-    background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
-    background-clip: text;
-    color: transparent;
+    background: linear-gradient(45deg, #ff0000, #ff7300, #ffeb00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
 }
+
 
 .Dorado {
     color: gold;
@@ -82,4 +84,24 @@
 
 .Plateado {
     color: silver;
+}
+
+figure {
+    object-fit: contain;
+    display: flex;
+    justify-items: center;
+
+
+    .shad-cus {
+
+        object-fit: contain;
+        filter: drop-shadow(-5px 20px 10px rgba(0, 0, 0, .25));
+        object-position: center;
+
+
+    }
+
+    :hover {
+        transform: rotateX('10deg');
+    }
 }

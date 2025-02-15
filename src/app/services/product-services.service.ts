@@ -134,8 +134,8 @@ export class ProductService {
       condition: "Bastante usado",
       availability: 0,
       rarity: "Poco común",
-      color: ["Azul", "Rosa"],
-      image: "p90/fuegooceanico.png"
+      color: ["Multicolor"],
+      image: "m4a1s/fuegooceanico.png"
     },
     {
       name: "Mármol Fade",
