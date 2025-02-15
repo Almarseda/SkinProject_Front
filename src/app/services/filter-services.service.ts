@@ -10,12 +10,14 @@ export class FilterServicesService {
   private selectedColorsSubject = new BehaviorSubject<string[]>([]);
   private selectedConditionsSubject = new BehaviorSubject<string[]>([]);
   private selectedRaritiesSubject = new BehaviorSubject<string[]>([])
+  private searchQuerySubject = new BehaviorSubject<string>('');
 
   minPrice$ = this.minPriceSubject.asObservable();
   maxPrice$ = this.maxPriceSubject.asObservable();
   selectedColors$ = this.selectedColorsSubject.asObservable();
   selectedConditions$ = this.selectedConditionsSubject.asObservable();
   selectedRarities$ = this.selectedRaritiesSubject.asObservable();
+  searchQuery$ = this.searchQuerySubject.asObservable();
 
 
   setMinPrice(value: string) {
@@ -58,4 +60,11 @@ export class FilterServicesService {
     return this.selectedRaritiesSubject.value
   }
 
+  setSearchQuery(query: string) {
+    this.searchQuerySubject.next(query);
+  }
+
+  getSearchQuery(): string {
+    return this.searchQuerySubject.value;
+  }
 }

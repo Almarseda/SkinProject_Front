@@ -26,13 +26,13 @@ export class ProductsComponent implements OnInit {
     this.filterService.maxPrice$.subscribe(() => this.filterProducts());
     this.filterService.selectedColors$.subscribe(() => this.filterProducts());
     this.filterService.selectedConditions$.subscribe(() => this.filterProducts());
-    this.filterService.selectedRarities$.subscribe(() => this.filterProducts())
+    this.filterService.searchQuery$.subscribe(() => this.filterProducts());
   }
 
   filterProducts() {
     let filteredList = this.productList;
 
-    // Filter condition
+    // Condition
     const selectedConditions = this.filterService.getSelectedConditions();
     if (selectedConditions.length > 0) {
       filteredList = filteredList.filter(product =>
@@ -40,7 +40,7 @@ export class ProductsComponent implements OnInit {
       );
     }
 
-    // Filter price
+    // Price
     const minPrice = this.filterService.getMinPrice();
     const maxPrice = this.filterService.getMaxPrice();
     filteredList = filteredList.filter(
@@ -49,7 +49,7 @@ export class ProductsComponent implements OnInit {
         (maxPrice == null || product.price <= maxPrice)
     );
 
-    // Filter color
+    // Color
     const selectedColors = this.filterService.getSelectedColors();
     if (selectedColors.length > 0) {
       filteredList = filteredList.filter(product =>
@@ -57,10 +57,14 @@ export class ProductsComponent implements OnInit {
       );
     }
 
-    // Filter Rarity
-    const selectedRarities = this.filterService.getSelectedRarities();
-    if (selectedRarities.length > 0) {
-      filteredList = filteredList.filter(product => selectedRarities.includes(product.rarity))
+    // Search
+    const searchQuery = this.filterService.getSearchQuery().toLowerCase().trim();
+    if (searchQuery) {
+      filteredList = filteredList.filter(
+        product =>
+          product.name.toLowerCase().includes(searchQuery) ||
+          product.model.toLowerCase().includes(searchQuery)
+      );
     }
 
     this.filteredProductList = filteredList;
