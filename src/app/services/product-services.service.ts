@@ -264,5 +264,8 @@ export class ProductService {
     return [... new Set(this.productList.flatMap(product => product.color))]
   }
 
+  getRarity() {
+    return [... new Set(this.productList.map(product => product.rarity))]
+  }
 
 }

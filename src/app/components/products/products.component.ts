@@ -26,6 +26,7 @@ export class ProductsComponent implements OnInit {
     this.filterService.maxPrice$.subscribe(() => this.filterProducts());
     this.filterService.selectedColors$.subscribe(() => this.filterProducts());
     this.filterService.selectedConditions$.subscribe(() => this.filterProducts());
+    this.filterService.selectedRarities$.subscribe(() => this.filterProducts())
   }
 
   filterProducts() {
@@ -54,6 +55,12 @@ export class ProductsComponent implements OnInit {
       filteredList = filteredList.filter(product =>
         product.color.some(color => selectedColors.includes(color))
       );
+    }
+
+    // Filter Rarity
+    const selectedRarities = this.filterService.getSelectedRarities();
+    if (selectedRarities.length > 0) {
+      filteredList = filteredList.filter(product => selectedRarities.includes(product.rarity))
     }
 
     this.filteredProductList = filteredList;

@@ -1,1 +1,9 @@
 <p>rarity works!</p>
+@for(rarity of rarities; track $index){
+<div class="flex items-center gap-2 p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">
+    <input type="checkbox"
+        class="h-5 w-5 text-blue-500 border-gray-300 rounded focus:ring focus:ring-blue-300 dark:focus:ring-blue-600"
+        name="color" [value]="rarity" (change)="onRarityChange(rarity, $event)">
+    <label [for]="rarity" class="text-gray-700 dark:text-gray-300 font-medium cursor-pointer">{{rarity}}</label>
+</div>
+}
