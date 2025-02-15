@@ -14,7 +14,13 @@
         <h4>{{product.name}}</h4>
         <p>{{product.condition}}</p>
         <p class="rarity">{{product.rarity}}</p>
-        <p> {{product.color}}</p>
+        @if(product.color.length > 1){
+        <p> <span [class]="product.color[0]" class="text-xs">{{product.color[0]}}</span>, <span
+                [class]="product.color[1]" class="text-xs">{{product.color[1]}}</span>
+        </p>
+        }@else{
+        <p class=""> <span [class]="product.color[0]" class="text-xs">{{product.color[0]}}</span></p>
+        }
     </div>
 </div>
 }
