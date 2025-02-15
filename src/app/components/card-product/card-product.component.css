@@ -67,7 +67,7 @@
 
 .Multicolor {
     background: linear-gradient(45deg, #ff0000, #ff7300, #ffeb00);
-    -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
 }

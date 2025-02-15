@@ -7,9 +7,11 @@ import { BehaviorSubject } from 'rxjs';
 export class FilterServicesService {
   private minPriceSubject = new BehaviorSubject<number | null>(null);
   private maxPriceSubject = new BehaviorSubject<number | null>(null);
+  private selectedColorsSubject = new BehaviorSubject<string[]>([]);
 
   minPrice$ = this.minPriceSubject.asObservable();
   maxPrice$ = this.maxPriceSubject.asObservable();
+  selectedColors$ = this.selectedColorsSubject.asObservable();
 
   setMinPrice(value: string) {
     const minPrice = value ? Number(value) : null;
@@ -27,5 +29,13 @@ export class FilterServicesService {
 
   getMaxPrice(): number | null {
     return this.maxPriceSubject.value;
+  }
+
+  setSelectedColors(colors: string[]) {
+    this.selectedColorsSubject.next(colors);
+  }
+
+  getSelectedColors(): string[] {
+    return this.selectedColorsSubject.value;
   }
 }

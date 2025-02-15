@@ -10,13 +10,25 @@ import { FilterServicesService } from '../../../services/filter-services.service
   styleUrl: './color.component.css'
 })
 export class ColorComponent {
+  private productService = inject(ProductService);
+  private filterService = inject(FilterServicesService);
 
-  private productService = inject(ProductService)
-  private filterService = inject(FilterServicesService)
-
-  colors: string[] = []
+  colors: string[] = [];
+  selectedColors: string[] = [];
 
   ngOnInit() {
-    this.colors = this.productService.getColors()
+    this.colors = this.productService.getColors();
+  }
+
+  onColorChange(color: string, event: Event) {
+    const isChecked = (event.target as HTMLInputElement).checked;
+
+    if (isChecked) {
+      this.selectedColors.push(color);
+    } else {
+      this.selectedColors = this.selectedColors.filter(c => c !== color);
+    }
+
+    this.filterService.setSelectedColors(this.selectedColors);
   }
 }
