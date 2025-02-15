@@ -5,6 +5,6 @@ export interface Product {
     condition: string;
     availability: number;
     rarity: string;
-    color: string;
+    color: string[];
     image: string;
 }
