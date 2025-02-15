@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ProductsComponent } from "./components/products/products.component";
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
+import { initFlowbite } from 'flowbite';
+
 
 @Component({
   selector: 'app-root',
@@ -16,5 +18,8 @@ export class AppComponent {
 
   onStateChange(selectedEstados: string[]) {
     this.selectedCondition = selectedEstados;
+  }
+  ngOnInit(): void {
+    initFlowbite();
   }
 }
