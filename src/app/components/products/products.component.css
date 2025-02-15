@@ -19,7 +19,6 @@
 
 .cards::-webkit-scrollbar {
     display: none;
-    /* Chrome, Safari y Edge */
 }
 
 .eachCard {

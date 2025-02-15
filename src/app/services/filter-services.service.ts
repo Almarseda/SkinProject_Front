@@ -1,44 +1,31 @@
-import { inject, Injectable } from '@angular/core';
-import { ProductService } from './product-services.service';
-import { Product } from '../interfaces/product';
+import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FilterServicesService {
+  private minPriceSubject = new BehaviorSubject<number | null>(null);
+  private maxPriceSubject = new BehaviorSubject<number | null>(null);
 
-  private productList = new BehaviorSubject<Product[]>([]);
-  productList$ = this.productList.asObservable();
+  minPrice$ = this.minPriceSubject.asObservable();
+  maxPrice$ = this.maxPriceSubject.asObservable();
 
-  constructor(private productService: ProductService) {
-    this.loadAllProducts();
+  setMinPrice(value: string) {
+    const minPrice = value ? Number(value) : null;
+    this.minPriceSubject.next(minPrice);
   }
 
-  private minPriceValue = new BehaviorSubject<number>(0);
-  private maxPriceValue = new BehaviorSubject<number>(0);
-
-  minPrice$ = this.minPriceValue.asObservable();
-  maxPrice$ = this.maxPriceValue.asObservable();
-
-  setMinPrice(price: number): void {
-    this.minPriceValue.next(price);
+  setMaxPrice(value: string) {
+    const maxPrice = value ? Number(value) : null;
+    this.maxPriceSubject.next(maxPrice);
   }
 
-  setMaxPrice(price: number): void {
-    this.maxPriceValue.next(price);
+  getMinPrice(): number | null {
+    return this.minPriceSubject.value;
   }
 
-  getMinPrice(): number {
-    return this.minPriceValue.getValue();
-  }
-
-  getMaxPrice(): number {
-    return this.maxPriceValue.getValue();
-  }
-
-  private loadAllProducts(): void {
-    const products = this.productService.getAllProducts();
-    this.productList.next(products);
+  getMaxPrice(): number | null {
+    return this.maxPriceSubject.value;
   }
 }

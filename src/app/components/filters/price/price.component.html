@@ -1,7 +1,7 @@
 <div>
     <label for="minPrice">Precio Mínimo</label>
-    <input type="text" name="minPrice" value="{{minPrice}}" (change)="onMinPriceChange($event)">
+    <input type="text" name="minPrice" [value]="minPrice" (change)="onMinPriceChange($event)" />
 
     <label for="maxPrice">Precio Máximo</label>
-    <input type="text" name="maxPrice" value="{{maxPrice}}" (change)="onMaxPriceChange($event)">
+    <input type="text" name="maxPrice" [value]="maxPrice" (change)="onMaxPriceChange($event)" />
 </div>

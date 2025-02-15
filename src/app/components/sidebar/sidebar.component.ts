@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Output } from '@angular/core';
+import { Component, EventEmitter, inject, OnInit, Output } from '@angular/core';
 import { ProductService } from '../../services/product-services.service';
 import { PriceComponent } from "../filters/price/price.component";
 
@@ -9,31 +9,29 @@ import { PriceComponent } from "../filters/price/price.component";
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css'
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit {
 
   @Output() stateChange = new EventEmitter<string[]>();
 
-  arrEstados: string[] = []
-  arrRareza: string[] = []
-
+  arrEstados: string[] = [];
   selectedEstados: string[] = [];
 
-  productService = inject(ProductService)
+  productService = inject(ProductService);
 
   ngOnInit() {
     this.arrEstados = this.productService.getCondition();
-    this.selectedEstados = [...this.arrEstados];
-    this.stateChange.emit(this.selectedEstados);
-    console.log(this.arrEstados);
   }
 
-  onStateChange(event: any) {
-    const estado = event.target.value;
-    if (event.target.checked) {
+  onStateChange(event: Event) {
+    const checkbox = event.target as HTMLInputElement;
+    const estado = checkbox.value;
+
+    if (checkbox.checked) {
       this.selectedEstados.push(estado);
     } else {
       this.selectedEstados = this.selectedEstados.filter(e => e !== estado);
     }
+
     this.stateChange.emit(this.selectedEstados);
   }
 }

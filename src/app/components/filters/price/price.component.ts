@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FilterServicesService } from '../../../services/filter-services.service';
 
 @Component({
@@ -9,23 +9,19 @@ import { FilterServicesService } from '../../../services/filter-services.service
   styleUrl: './price.component.css'
 })
 export class PriceComponent {
+  filterService = inject(FilterServicesService);
+  minPrice: number | null = null;
+  maxPrice: number | null = null;
 
-  minPrice: number;
-  maxPrice: number;
-
-  constructor(private priceFilterService: FilterServicesService) {
-    this.minPrice = 0;
-    this.maxPrice = 0;
+  onMinPriceChange(event: Event) {
+    const value = (event.target as HTMLInputElement).value;
+    this.minPrice = value ? Number(value) : null;
+    this.filterService.setMinPrice(value);
   }
 
-  onMinPriceChange(event: any): void {
-    this.minPrice = event.target.value;
-    this.priceFilterService.setMinPrice(this.minPrice);
-  }
-
-  onMaxPriceChange(event: any): void {
-    this.maxPrice = event.target.value;
-    this.priceFilterService.setMaxPrice(this.maxPrice);
+  onMaxPriceChange(event: Event) {
+    const value = (event.target as HTMLInputElement).value;
+    this.maxPrice = value ? Number(value) : null;
+    this.filterService.setMaxPrice(value);
   }
 }
-

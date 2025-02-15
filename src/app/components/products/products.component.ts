@@ -1,8 +1,9 @@
-import { Component, inject, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, inject, Input, OnChanges, SimpleChanges, OnInit } from '@angular/core';
 import { Product } from '../../interfaces/product';
 import { CardProductComponent } from "../card-product/card-product.component";
 import { ProductService } from '../../services/product-services.service';
 import { FilterServicesService } from '../../services/filter-services.service';
+import { PriceComponent } from "../filters/price/price.component";
 
 @Component({
   selector: 'app-products',
@@ -11,9 +12,8 @@ import { FilterServicesService } from '../../services/filter-services.service';
   templateUrl: './products.component.html',
   styleUrl: './products.component.css'
 })
-export class ProductsComponent {
+export class ProductsComponent implements OnInit {
   @Input() selectedCondition: string[] = [];
-
   productService = inject(ProductService);
   filterService = inject(FilterServicesService);
 
@@ -21,40 +21,43 @@ export class ProductsComponent {
   productList: Product[] = [];
 
   ngOnInit() {
-    this.filterService.productList$.subscribe(products => {
-      this.productList = products;
-      this.filteredProductList = this.productList;
-    });
 
-    this.filterService.minPrice$.subscribe(minPrice => {
-      this.filterProducts(minPrice, this.filterService.getMaxPrice());
-    });
+    this.productList = this.productService.getAllProducts();
+    this.filteredProductList = this.productList;
 
-    this.filterService.maxPrice$.subscribe(maxPrice => {
-      this.filterProducts(this.filterService.getMinPrice(), maxPrice);
-    });
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['selectedCondition']) {
+    this.filterService.minPrice$.subscribe(() => {
       this.filterProducts();
-    }
+    });
+
+
+    this.filterService.maxPrice$.subscribe(() => {
+      this.filterProducts();
+    });
   }
 
-  filterProducts(minPrice?: number, maxPrice?: number) {
+  onStateChange(selectedEstados: string[]) {
+    this.filterProducts(selectedEstados);
+  }
+
+  filterProducts(selectedEstados?: string[]) {
     let filteredList = this.productList;
 
-    if (this.selectedCondition.length > 0) {
-      filteredList = filteredList.filter(product =>
-        this.selectedCondition.includes(product.condition)
+
+    if (selectedEstados && selectedEstados.length > 0) {
+      filteredList = filteredList.filter((product) =>
+        selectedEstados.includes(product.condition)
       );
     }
 
-    if (minPrice !== undefined && maxPrice !== undefined) {
-      filteredList = filteredList.filter(product =>
-        product.price >= minPrice && product.price <= maxPrice
-      );
-    }
+
+    const minPrice = this.filterService.getMinPrice();
+    const maxPrice = this.filterService.getMaxPrice();
+
+    filteredList = filteredList.filter(
+      (product) =>
+        (minPrice == null || product.price >= minPrice) &&
+        (maxPrice == null || product.price <= maxPrice)
+    );
 
     this.filteredProductList = filteredList;
   }
