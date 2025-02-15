@@ -264,4 +264,5 @@ export class ProductService {
     return [... new Set(this.productList.flatMap(product => product.color))]
   }
 
+
 }
