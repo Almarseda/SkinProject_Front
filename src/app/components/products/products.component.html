@@ -1,5 +1,13 @@
-<div class="cards items-center">
+<div class="z-0 over">
+    <div>
+        <p class="p-5 text-white items-center">COUNTER-STRIKE 2</p>
+    </div>
+</div>
+<div class="cards overflow-visible items-center flex flex-col z-50">
     @for(product of filteredProductList; track product.name) {
-    <app-card-product [product]="product" class="eachCard "></app-card-product>
+    <div
+        class="relative hover:z-50 transition duration-300 origin-bottom hover:scale-y-105 shadow-lg hover:shadow-2xl ">
+        <app-card-product [product]="product" class="eachCard"></app-card-product>
+    </div>
     }
 </div>
