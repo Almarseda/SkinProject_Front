@@ -58,15 +58,20 @@ export class ProductsComponent implements OnInit {
     }
 
     // Search
-    const searchQuery = this.filterService.getSearchQuery().toLowerCase().trim();
+    const searchQuery = this.removeAccents(this.filterService.getSearchQuery().toLowerCase().trim());
     if (searchQuery) {
-      filteredList = filteredList.filter(
-        product =>
-          product.name.toLowerCase().includes(searchQuery) ||
-          product.model.toLowerCase().includes(searchQuery)
-      );
+      const searchWords = searchQuery.split(/\s+/);
+
+      filteredList = filteredList.filter(product => {
+        const productText = this.removeAccents(`${product.name} ${product.model}`.toLowerCase());
+        return searchWords.every(word => productText.includes(word));
+      });
     }
 
     this.filteredProductList = filteredList;
+  }
+
+  removeAccents(text: string): string {
+    return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   }
 }
