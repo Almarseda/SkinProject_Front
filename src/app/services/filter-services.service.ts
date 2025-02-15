@@ -8,19 +8,19 @@ export class FilterServicesService {
   private minPriceSubject = new BehaviorSubject<number | null>(null);
   private maxPriceSubject = new BehaviorSubject<number | null>(null);
   private selectedColorsSubject = new BehaviorSubject<string[]>([]);
+  private selectedConditionsSubject = new BehaviorSubject<string[]>([]);
 
   minPrice$ = this.minPriceSubject.asObservable();
   maxPrice$ = this.maxPriceSubject.asObservable();
   selectedColors$ = this.selectedColorsSubject.asObservable();
+  selectedConditions$ = this.selectedConditionsSubject.asObservable();
 
   setMinPrice(value: string) {
-    const minPrice = value ? Number(value) : null;
-    this.minPriceSubject.next(minPrice);
+    this.minPriceSubject.next(value ? Number(value) : null);
   }
 
   setMaxPrice(value: string) {
-    const maxPrice = value ? Number(value) : null;
-    this.maxPriceSubject.next(maxPrice);
+    this.maxPriceSubject.next(value ? Number(value) : null);
   }
 
   getMinPrice(): number | null {
@@ -37,5 +37,13 @@ export class FilterServicesService {
 
   getSelectedColors(): string[] {
     return this.selectedColorsSubject.value;
+  }
+
+  setSelectedConditions(conditions: string[]) {
+    this.selectedConditionsSubject.next(conditions);
+  }
+
+  getSelectedConditions(): string[] {
+    return this.selectedConditionsSubject.value;
   }
 }

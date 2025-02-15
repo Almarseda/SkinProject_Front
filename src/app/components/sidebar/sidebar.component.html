@@ -1,12 +1,5 @@
 <div class="sidebar">
-    <div class="estado">
-        <label for="estado">Estado</label>
-        @for(estado of arrEstados; track $index) {
-        <input type="checkbox" class="estado" name="estado" value="{{estado}}" (change)="onStateChange($event)" />
-        {{estado}}
-        }
-    </div>
-
+    <app-condition></app-condition>
     <app-price></app-price>
     <app-color></app-color>
 </div>

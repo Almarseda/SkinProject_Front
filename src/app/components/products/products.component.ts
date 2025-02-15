@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Product } from '../../interfaces/product';
 import { ProductService } from '../../services/product-services.service';
 import { FilterServicesService } from '../../services/filter-services.service';
@@ -12,7 +12,6 @@ import { CardProductComponent } from "../card-product/card-product.component";
   styleUrl: './products.component.css'
 })
 export class ProductsComponent implements OnInit {
-  @Input() selectedCondition: string[] = [];
   productService = inject(ProductService);
   filterService = inject(FilterServicesService);
 
@@ -26,21 +25,21 @@ export class ProductsComponent implements OnInit {
     this.filterService.minPrice$.subscribe(() => this.filterProducts());
     this.filterService.maxPrice$.subscribe(() => this.filterProducts());
     this.filterService.selectedColors$.subscribe(() => this.filterProducts());
+    this.filterService.selectedConditions$.subscribe(() => this.filterProducts());
   }
 
-  onStateChange(selectedEstados: string[]) {
-    this.filterProducts(selectedEstados);
-  }
-
-  filterProducts(selectedEstados?: string[]) {
+  filterProducts() {
     let filteredList = this.productList;
 
-    if (selectedEstados && selectedEstados.length > 0) {
-      filteredList = filteredList.filter((product) =>
-        selectedEstados.includes(product.condition)
+    // Filter condition
+    const selectedConditions = this.filterService.getSelectedConditions();
+    if (selectedConditions.length > 0) {
+      filteredList = filteredList.filter(product =>
+        selectedConditions.includes(product.condition)
       );
     }
 
+    // Filter price
     const minPrice = this.filterService.getMinPrice();
     const maxPrice = this.filterService.getMaxPrice();
     filteredList = filteredList.filter(
@@ -49,10 +48,11 @@ export class ProductsComponent implements OnInit {
         (maxPrice == null || product.price <= maxPrice)
     );
 
+    // Filter color
     const selectedColors = this.filterService.getSelectedColors();
     if (selectedColors.length > 0) {
-      filteredList = filteredList.filter((product) =>
-        product.color.some((color) => selectedColors.includes(color))
+      filteredList = filteredList.filter(product =>
+        product.color.some(color => selectedColors.includes(color))
       );
     }
 

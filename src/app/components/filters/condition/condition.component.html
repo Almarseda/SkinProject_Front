@@ -2,7 +2,8 @@
 <div class="condition">
     <label for="condition">Estado</label>
     @for(condition of conditions; track $index) {
-    <input type="checkbox" class="condition" name="condition" [value]="condition">
+    <input type="checkbox" class="condition" name="condition" [value]="condition"
+        (change)="onConditionChange(condition, $event)">
     {{condition}}
     }
 </div>
