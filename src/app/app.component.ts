@@ -14,11 +14,7 @@ import { initFlowbite } from 'flowbite';
 export class AppComponent {
   title = 'SkinsProject';
 
-  selectedCondition: string[] = [];
 
-  onStateChange(selectedEstados: string[]) {
-    this.selectedCondition = selectedEstados;
-  }
   ngOnInit(): void {
     initFlowbite();
   }

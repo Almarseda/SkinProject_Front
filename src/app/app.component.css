@@ -13,13 +13,16 @@
 }
 
 .sidebar {
-    padding: 10px;
-    height: 100vh;
+    padding-bottom: 10px;
+    height: fit-content;
     background-color: #2B2E30;
+
 }
+
 
 .main {
     display: flex;
     margin: 0 auto;
     width: 100%;
+    overflow: auto;
 }
