@@ -1,0 +1,8 @@
+<p>condition works!</p>
+<div class="condition">
+    <label for="condition">Estado</label>
+    @for(condition of conditions; track $index) {
+    <input type="checkbox" class="condition" name="condition" [value]="condition">
+    {{condition}}
+    }
+</div>
