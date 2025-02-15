@@ -1,4 +1,4 @@
-.container {
+.main {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -9,6 +9,8 @@
         width: 100%;
         display: grid;
         height: 100hv;
+        overflow: auto;
+        scroll-behavior: smooth;
     }
 }
 
@@ -22,7 +24,12 @@
 
 .main {
     display: flex;
-    margin: 0 auto;
+
     width: 100%;
     overflow: auto;
+}
+
+.navbar {
+    background-color: #2B2E30;
+    margin-bottom: 2px;
 }
