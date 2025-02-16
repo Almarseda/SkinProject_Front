@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { SesionService } from '../../../services/sesion.service';
 import { Router } from '@angular/router';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { toast } from 'sonner';
 
 @Component({
   selector: 'app-register',
@@ -48,12 +49,10 @@ export class RegisterComponent {
       const { username, email, password } = this.regForm.value;
 
       if (this.sesionService.register(username, email, password)) {
-        this.successMessage = 'Registro exitoso. Redirigiendo...';
-        this.errorMessage = '';
+        toast.success('✅ Registro exitoso. Redirigiendo...', { duration: 2000 });
         setTimeout(() => this.router.navigate(['/login']), 2000);
       } else {
-        this.errorMessage = 'Este correo ya está registrado.';
-        this.successMessage = '';
+        toast.error('⚠️ Este correo ya está registrado.');
       }
     }
   }
