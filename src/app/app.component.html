@@ -2,11 +2,14 @@
     <div class="h-auto navbar relative z-0">
         <app-navbar></app-navbar>
     </div>
-    <div class="main">
-        <div class="sidebar">
+    <div class="main flex">
+
+        @if (showSidebar) {
+        <div [@slideInOut]="animationState" class="sidebar w-64">
             <app-sidebar></app-sidebar>
         </div>
-        <div class="products relative z-0">
+        }
+        <div class="products relative z-0 flex-grow transition-all duration-300">
             <div class="z-50 overflow-visible">
                 <app-products></app-products>
             </div>

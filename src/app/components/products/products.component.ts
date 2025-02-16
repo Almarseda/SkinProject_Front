@@ -3,11 +3,14 @@ import { Product } from '../../interfaces/product';
 import { ProductService } from '../../services/product-services.service';
 import { FilterServicesService } from '../../services/filter-services.service';
 import { CardProductComponent } from "../card-product/card-product.component";
+import { ButtonService } from '../../services/button.service';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faFilter } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [CardProductComponent],
+  imports: [CardProductComponent, FontAwesomeModule],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css'
 })
@@ -17,6 +20,13 @@ export class ProductsComponent implements OnInit {
 
   filteredProductList: Product[] = [];
   productList: Product[] = [];
+
+  faFilter = faFilter
+  private buttonService = inject(ButtonService);
+
+  toggleFilters() {
+    this.buttonService.toggleFilters();
+  }
 
   ngOnInit() {
     this.productList = this.productService.getAllProducts();
