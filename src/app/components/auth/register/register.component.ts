@@ -43,7 +43,7 @@ export class RegisterComponent {
 
       if (this.sesionService.register(username, email, password)) {
         this.toastr.success('✅ Registro exitoso. Redirigiendo...', 'Éxito');
-        setTimeout(() => this.router.navigate(['/main']), 2000);
+        setTimeout(() => this.router.navigate(['/login']), 2000);
       } else {
         this.toastr.error('⚠️ Este correo ya está registrado.', 'Error');
       }
