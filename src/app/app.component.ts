@@ -2,7 +2,6 @@ import { Component, effect, inject } from '@angular/core';
 import { NavbarComponent } from "./components/navbar/navbar.component";
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { Toaster } from 'sonner';
 
 @Component({
   selector: 'app-root',
@@ -17,9 +16,5 @@ import { Toaster } from 'sonner';
 
 })
 export class AppComponent {
-  constructor() {
-    effect(() => {
-      Toaster();
-    });
-  }
+
 }
