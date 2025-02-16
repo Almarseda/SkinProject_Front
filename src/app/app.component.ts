@@ -5,7 +5,7 @@ import { NavbarComponent } from "./components/navbar/navbar.component";
 import { CommonModule } from '@angular/common';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { ButtonService } from './services/button.service';
-import { initFlowbite } from 'flowbite';
+import { initFlowbite } from 'flowbite'; // 🔹 Importar Flowbite
 
 @Component({
   selector: 'app-root',
@@ -20,13 +20,13 @@ import { initFlowbite } from 'flowbite';
   styleUrls: ['./app.component.css'],
   animations: [
     trigger('slideInOut', [
-      state('in', style({ transform: 'translateX(0%)', opacity: 1, width: '16rem' })),
-      state('out', style({ transform: 'translateX(-100%)', opacity: 0, width: '0' })),
+      state('in', style({ transform: 'translateX(0%)', opacity: 1, width: '16rem' })), // Sidebar visible
+      state('out', style({ transform: 'translateX(-100%)', opacity: 0, width: '0' })), // Sidebar oculto
       transition('in => out', [
-        animate('700ms ease-in-out', style({ opacity: 0, transform: 'translateX(-100%)', width: '0' }))
+        animate('300ms ease-in-out', style({ opacity: 0, transform: 'translateX(-100%)', width: '0' }))
       ]),
       transition('out => in', [
-        animate('700ms ease-in-out', style({ opacity: 1, transform: 'translateX(0%)', width: '16rem' }))
+        animate('300ms ease-in-out', style({ opacity: 1, transform: 'translateX(0%)', width: '16rem' }))
       ]),
     ])
   ]
@@ -43,11 +43,13 @@ export class AppComponent {
         this.isSidebarVisible = false;
         setTimeout(() => {
           this.showSidebar = false;
-        }, 800);
+        }, 300);
       } else {
+
         this.showSidebar = true;
         setTimeout(() => {
           this.isSidebarVisible = true;
+          initFlowbite();
         }, 10);
       }
     });
@@ -55,8 +57,5 @@ export class AppComponent {
 
   get animationState() {
     return this.isSidebarVisible ? 'in' : 'out';
-  }
-  ngOnInit(): void {
-    initFlowbite();
   }
 }
