@@ -1,21 +1,28 @@
 <div class="p-5 z-10 sticky top-0 left-0 w-full shadow-md">
     <div class="logo flex flex-row justify-between">
-        <figure>
-            <img class="w-24" src="skinproject.png" alt="logo">
-        </figure>
+        <button [routerLink]="['main']">
+            <figure>
+                <img class="w-24" src="skinproject.png" alt="logo">
+            </figure>
+        </button>
         <div>
 
         </div>
+        @if(sesionService.isAuthenticated()){
         <div>
             <app-search></app-search>
         </div>
+
+        }@else {
+
         <div class="flex items-center gap-5">
-            <p class="text-white hover:text-orange-600"><a href="#">Iniciar Sesion</a></p>
+            <p class="text-white hover:text-orange-600"><button [routerLink]="['login']">Iniciar Sesion</button></p>
             <button
                 class="text-white px-3 py-2 rounded bg-orange-600 transition duration-700 hover:bg-orange-300 hover:text-orange-800"
                 [routerLink]="['register']">
                 Registrate
             </button>
         </div>
+        }
     </div>
 </div>

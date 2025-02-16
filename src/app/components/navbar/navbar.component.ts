@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { SearchComponent } from "../filters/search/search.component";
 import { RouterLink } from '@angular/router';
+import { SesionService } from '../../services/sesion.service';
 
 
 @Component({
@@ -11,5 +12,5 @@ import { RouterLink } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-
+  sesionService = inject(SesionService)
 }
