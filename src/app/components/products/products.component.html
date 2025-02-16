@@ -7,10 +7,16 @@
     </div>
 </div>
 <div class="cards overflow-visible items-center flex flex-col z-50">
+    @if(filteredProductList.length === 0) {
+    <div class="no-prod flex justify-center p-5  text-[#3b3f42] h-screen">
+        <p>No hay productos</p>
+    </div>
+    } @else {
     @for(product of filteredProductList; track product.name) {
     <div
         class="relative hover:z-50 transition duration-300 origin-bottom hover:scale-y-105 shadow-lg hover:shadow-2xl ">
         <app-card-product [product]="product" class="eachCard"></app-card-product>
     </div>
+    }
     }
 </div>
