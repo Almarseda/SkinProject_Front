@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { SesionService } from '../../../services/sesion.service';
 import { Router } from '@angular/router';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators, ValidationErrors } from '@angular/forms';
-
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -15,6 +15,7 @@ export class RegisterComponent {
 
   sesionService = inject(SesionService);
   router = inject(Router);
+  toastr = inject(ToastrService);
 
 
   passwordValidator(form: AbstractControl): ValidationErrors | null {
@@ -25,10 +26,8 @@ export class RegisterComponent {
       confirmPasswordControl.setErrors({ passwordMismatch: true });
       return { passwordMismatch: true };
     }
-
     return null;
   }
-
 
   regForm: FormGroup = new FormGroup({
     username: new FormControl('', [Validators.required, Validators.minLength(3)]),
@@ -38,23 +37,18 @@ export class RegisterComponent {
   }, { validators: this.passwordValidator });
 
 
-  checkError(fieldName: string, errorName: string) {
-    return this.regForm.get(fieldName)?.hasError(errorName) && this.regForm.get(fieldName)?.touched;
-  }
-
-
   onSubmit() {
-    console.log('submit')
     if (this.regForm.valid) {
-      console.log('validated')
       const { username, email, password } = this.regForm.value;
 
       if (this.sesionService.register(username, email, password)) {
-
+        this.toastr.success('✅ Registro exitoso. Redirigiendo...', 'Éxito');
         setTimeout(() => this.router.navigate(['/main']), 2000);
       } else {
-
+        this.toastr.error('⚠️ Este correo ya está registrado.', 'Error');
       }
+    } else {
+      this.toastr.warning('⚠️ Completa todos los campos correctamente.', 'Advertencia');
     }
   }
 }
