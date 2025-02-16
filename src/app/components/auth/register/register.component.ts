@@ -14,6 +14,10 @@ export class RegisterComponent {
 
   sesionService = inject(SesionService);
   router = inject(Router);
+  errorMessage = '';
+  successMessage = '';
+
+
   passwordValidator(form: AbstractControl) {
     const passwordControl = form.get('password')
     const repitePasswordControl = form.get('confirmPassword');
@@ -38,7 +42,19 @@ export class RegisterComponent {
   }
 
 
-  onSubmit() {
 
+  onSubmit() {
+    if (this.regForm.valid) {
+      const { username, email, password } = this.regForm.value;
+
+      if (this.sesionService.register(username, email, password)) {
+        this.successMessage = 'Registro exitoso. Redirigiendo...';
+        this.errorMessage = '';
+        setTimeout(() => this.router.navigate(['/login']), 2000);
+      } else {
+        this.errorMessage = 'Este correo ya está registrado.';
+        this.successMessage = '';
+      }
+    }
   }
 }

@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class SesionService {
-  private readonly USERS_KEY = 'usersDB';
+  private readonly USERS_KEY = 'userData';
   private readonly TOKEN_KEY = 'authToken';
   private readonly USER_KEY = 'authUser';
 
@@ -58,6 +58,7 @@ export class SesionService {
   isAuthenticated(): boolean {
     return localStorage.getItem(this.TOKEN_KEY) !== null;
   }
+
 
   logout(): void {
     localStorage.removeItem(this.TOKEN_KEY);
