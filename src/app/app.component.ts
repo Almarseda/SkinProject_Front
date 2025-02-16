@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { ButtonService } from './services/button.service';
 import { initFlowbite } from 'flowbite'; // 🔹 Importar Flowbite
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,7 @@ import { initFlowbite } from 'flowbite'; // 🔹 Importar Flowbite
     ProductsComponent,
     SidebarComponent,
     NavbarComponent,
+    RouterOutlet
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
