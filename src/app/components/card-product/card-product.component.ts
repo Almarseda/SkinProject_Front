@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Product } from '../../interfaces/product';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faClock, faDotCircle } from '@fortawesome/free-solid-svg-icons';
-import { HighlightMatchDirective } from '../../../directives/highlight-match.directive';
+import { HighlightMatchDirective } from '../../directives/highlight-match.directive';
 
 // Asegura la ruta correcta
 

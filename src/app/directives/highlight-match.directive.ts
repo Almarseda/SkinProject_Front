@@ -1,6 +1,6 @@
 import { Directive, ElementRef, Input, Renderer2, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { FilterServicesService } from '../app/services/filter-services.service';
+import { FilterServicesService } from '../services/filter-services.service';
 
 
 @Directive({
