@@ -16,7 +16,7 @@
     </div>
     <div class="info">
         <p>{{product.model}}</p>
-        <h4>{{product.name}}</h4>
+        <h4 [appHighlightMatch] [text]="product.name">{{product.name}}</h4>
         <p>{{product.condition}}</p>
         <p class="rarity">{{product.rarity}}</p>
         @if(product.color.length > 1){
